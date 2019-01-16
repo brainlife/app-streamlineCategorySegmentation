@@ -15,11 +15,11 @@ Date:   Wed Sep 6 13:01:57 2017 -0400
     
     added package.json to be able to intall via npm package manager
 /N/u/brlife/git/wma_tools
-commit b01bb1d0f5bbba93fc815cdf5953cd194df99a66
+commit c5f2de24381b67de6e03570f7c68f18db2fc2b7e
 Author: Daniel Bullock <dnbulloc@i10.red.uits.iu.edu>
-Date:   Wed Jan 16 17:23:14 2019 -0500
+Date:   Wed Jan 16 18:02:02 2019 -0500
 
-    fixed save issue for bigger tracts
+     fixed save 7.3 issue
 /N/u/brlife/git/encode
 commit c6d514a0af169c58fbc48b519879f84dd6f92f68
 Merge: 5ec160d 1e1e017
