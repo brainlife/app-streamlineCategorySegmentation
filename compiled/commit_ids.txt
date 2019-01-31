@@ -15,11 +15,11 @@ Date:   Wed Sep 6 13:01:57 2017 -0400
     
     added package.json to be able to intall via npm package manager
 /N/u/brlife/git/wma_tools
-commit 96d9f9b0638064e486b7da1980f0a89f8878a763
+commit 018f255e6d35e1ad9a3e29076aa2ed14b19e7a3a
 Author: Daniel Bullock <dnbulloc@i16.red.uits.iu.edu>
-Date:   Thu Jan 31 17:22:58 2019 -0500
+Date:   Thu Jan 31 17:54:26 2019 -0500
 
-    probably fixed freesurfer issue
+    actually fixed freesurfer path issue
 /N/u/brlife/git/encode
 commit 538a73bc4f8b4d94545bc2dfe434fec55e0c7a95
 Author: Soichi Hayashi <hayashis@iu.edu>
