@@ -15,17 +15,14 @@ Date:   Wed Sep 6 13:01:57 2017 -0400
     
     added package.json to be able to intall via npm package manager
 /N/u/brlife/git/wma_tools
-commit c5f2de24381b67de6e03570f7c68f18db2fc2b7e
-Author: Daniel Bullock <dnbulloc@i10.red.uits.iu.edu>
-Date:   Wed Jan 16 18:02:02 2019 -0500
+commit e69e73f451a360149dd7dda94fb41b8faf4cfe10
+Author: Daniel Bullock <dnbulloc@i16.red.uits.iu.edu>
+Date:   Wed Jan 30 18:49:50 2019 -0500
 
-     fixed save 7.3 issue
+    updated old code with newer versions of roi interaction code.  Also updated category to v4
 /N/u/brlife/git/encode
-commit c6d514a0af169c58fbc48b519879f84dd6f92f68
-Merge: 5ec160d 1e1e017
-Author: Franco Pestilli <frakkopesto@gmail.com>
-Date:   Fri Dec 14 09:35:22 2018 -0500
+commit 538a73bc4f8b4d94545bc2dfe434fec55e0c7a95
+Author: Soichi Hayashi <hayashis@iu.edu>
+Date:   Tue Jan 22 10:14:41 2019 -0500
 
-    Merge pull request #93 from soichih/master
-    
-    Added code to clip out-of-dwi fiber coordinates
+    fixed the issue where fiber goes missing.
