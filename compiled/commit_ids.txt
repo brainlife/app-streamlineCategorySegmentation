@@ -15,11 +15,12 @@ Date:   Wed Sep 6 13:01:57 2017 -0400
     
     added package.json to be able to intall via npm package manager
 /N/u/brlife/git/wma_tools
-commit e69e73f451a360149dd7dda94fb41b8faf4cfe10
+commit 491fb03ad1aec6b439168418ca7da3dce9e05143
 Author: Daniel Bullock <dnbulloc@i16.red.uits.iu.edu>
-Date:   Wed Jan 30 18:49:50 2019 -0500
+Date:   Thu Jan 31 16:49:31 2019 -0500
 
-    updated old code with newer versions of roi interaction code.  Also updated category to v4
+    updated some segmentation code, let category test output aseg file used.
+    :
 /N/u/brlife/git/encode
 commit 538a73bc4f8b4d94545bc2dfe434fec55e0c7a95
 Author: Soichi Hayashi <hayashis@iu.edu>
