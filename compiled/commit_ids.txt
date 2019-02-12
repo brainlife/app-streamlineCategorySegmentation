@@ -15,11 +15,11 @@ Date:   Wed Sep 6 13:01:57 2017 -0400
     
     added package.json to be able to intall via npm package manager
 /N/u/brlife/git/wma_tools
-commit cd7d6f8f400b5e3124ff4cd3b7d1ffb0fd3af993
+commit 0f02dcdd8bb4a328e1194c3d1318cdf217ca66de
 Author: Daniel Bullock <dnbulloc@i26.red.uits.iu.edu>
-Date:   Mon Feb 11 11:44:50 2019 -0500
+Date:   Tue Feb 12 18:24:15 2019 -0500
 
-    added conditional to check if output variable was present
+    changed to plot log, thicker streamlines on quickPlot, and better error reporting on categories
 /N/u/brlife/git/encode
 commit 538a73bc4f8b4d94545bc2dfe434fec55e0c7a95
 Author: Soichi Hayashi <hayashis@iu.edu>
