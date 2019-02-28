@@ -15,11 +15,11 @@ Date:   Wed Sep 6 13:01:57 2017 -0400
     
     added package.json to be able to intall via npm package manager
 /N/u/brlife/git/wma_tools
-commit 0f02dcdd8bb4a328e1194c3d1318cdf217ca66de
-Author: Daniel Bullock <dnbulloc@i26.red.uits.iu.edu>
-Date:   Tue Feb 12 18:24:15 2019 -0500
+commit ea590414a1ce806416f090c506c5172ab17930a4
+Author: Daniel Bullock <dnbulloc@iu.edu>
+Date:   Thu Feb 28 17:42:51 2019 -0500
 
-    changed to plot log, thicker streamlines on quickPlot, and better error reporting on categories
+    switched to righte segmentation of cerebellar tracts
 /N/u/brlife/git/encode
 commit 538a73bc4f8b4d94545bc2dfe434fec55e0c7a95
 Author: Soichi Hayashi <hayashis@iu.edu>
