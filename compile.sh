@@ -29,3 +29,5 @@ END
 
 matlab -nodisplay -nosplash -r build && rm build.m
 
+#Doesn't work : (
+#matlab -nodisplay -nosplash -r "addpath(genpath('/N/u/brlife/git/wma_tools'));wma_makeFunctionListTxt('bsc_streamlineCategoryPriors_BL')"
