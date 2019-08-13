@@ -36,7 +36,7 @@ Because this is compiled code which runs on singularity, you can download the re
 
 Pull the wma toolkit repo:  https://github.com/DanNBullock/wma_tools
 
-Ensure that vistasoft (https://github.com/vistalab/vistasoft)and spm (https://www.fil.ion.ucl.ac.uk/spm/software/ ; tested with spm8) are installed.
+Ensure that vistasoft (https://github.com/vistalab/vistasoft) and spm (https://www.fil.ion.ucl.ac.uk/spm/software/ ; tested with spm8) are installed.
 
 Run: https://github.com/DanNBullock/wma_tools/blob/master/bsc_streamlineCategoryPriors_BL.m, but take care to ensure that the addpath-genpath statements are relevant to your local setup.
 
