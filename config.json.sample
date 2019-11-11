@@ -1,0 +1,5 @@
+{
+    "track": "testdata/track.tck",
+    "freesurfer": "testdata/output",
+    "inflateITer": 2
+}
