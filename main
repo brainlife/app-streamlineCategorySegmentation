@@ -14,8 +14,10 @@ fi
 
 echo "running segmentation"
 singularity exec -e docker://brainlife/mcr:r2019a ./compiled/main
-
 if [ ! -s classification/classification.mat ]; then
 	echo "output missing"
 	exit 1
 fi
+
+echo "Generating surfaces/ vtk from aparc+aseg.mgz"
+time singularity exec -e docker://brainlife/pythonvtk:1.1 ./freesurfer2vtks.py
