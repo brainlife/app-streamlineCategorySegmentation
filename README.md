@@ -4,7 +4,8 @@
 ![alt text](wmaSeg.png)
 
 # app-wmaSeg
-Automatically segment a tractogram into categories (i.e. fronto-parietal tracts, parieto-temporal tracts, etc).  HIGHLY RECOMMENDED AS A MEANS OF RUNNING AN INITIAL QUALITY ASSURANCE CHECK ON YOUR GENERATED TRACTOGRAPHY.
+Automatically segment a tractogram into categories (i.e. fronto-parietal tracts, parieto-temporal tracts, etc).
+THIS APPLICATION IS HIGHLY RECOMMENDED AS A MEANS OF RUNNING AN INITIAL QUALITY ASSURANCE CHECK ON YOUR GENERATED TRACTOGRAPHY OR AS A SANITY CHECK ON PROBLEMATIC SEGMENTATIONS.
 
 ### Authors
 - Daniel Bullock (dnbulloc@iu.edu)
@@ -68,7 +69,7 @@ https://singularity.lbl.gov/docs-installation
 https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall
 http://www.mrtrix.org/
  
- **Guide to preliminary category determinants:**
+## **Guide to preliminary category determinants:**
 
 Initial categorization occurs in virtue of each streamline&#39;s endpoints.  That is, each streamline is assigned two category labels, one for each endpoint.  Category label ordering ultimately does not matter, and thus neither does streamline orientation (i.e. first to last node vs last to first node).  This label is applied based on the volume in which the endpoint terminates.  The code checks which label from the [Freesurfer 2009 Destrieux atlas](https://surfer.nmr.mgh.harvard.edu/fswiki/DestrieuxAtlasChanges)), and category membership is ultimately determined from the tables depicted below.
 
