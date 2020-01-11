@@ -68,8 +68,10 @@ This App only requires [singularity](https://www.sylabs.io/singularity/) and (in
 https://singularity.lbl.gov/docs-installation
 https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall
 http://www.mrtrix.org/
- 
-## **Guide to preliminary category determinants:**
+
+## General Use Guide
+
+### **Guide to preliminary category determinants:**
 
 Initial categorization occurs in virtue of each streamline&#39;s endpoints.  That is, each streamline is assigned two category labels, one for each endpoint.  Category label ordering ultimately does not matter, and thus neither does streamline orientation (i.e. first to last node vs last to first node).  This label is applied based on the volume in which the endpoint terminates.  The code checks which label from the [Freesurfer 2009 Destrieux atlas](https://surfer.nmr.mgh.harvard.edu/fswiki/DestrieuxAtlasChanges)), and category membership is ultimately determined from the tables depicted below.
 
@@ -91,7 +93,7 @@ Initial categorization occurs in virtue of each streamline&#39;s endpoints.  Tha
 | Parietal | 157, 127, 168, 136, 126, 125, 156, 128, 141, 172, 147, 109, 103, 130, 110 |
 | Insula | 117, 149 |
 
-**Additional sub-categorical determinants:**
+### **Additional sub-categorical determinants:**
 
 In some cases secondary terms are affixed to a category, indicating that the streamlines associated with this subcategory meet some additional criteria which merits further note.  Listed below are these sub-categories and their membership requirements
 
@@ -100,11 +102,11 @@ In some cases secondary terms are affixed to a category, indicating that the str
 | Interhemispheric | Endpoints occur in separate hemispheres of brain |
 | U fiber | Streamlines that are both superficial (i.e. not deep in the white matter) and less than 30 mm in length. |
 
-**Additional Notes:**
+### **Additional Notes:**
 
 Finally, it&#39;s worth noting that some category membership is more important than others.  For example, a streamline which has a termination in a ventricle is not biologically plausible, and thus warrants a separate designation (and thus the label &quot;ventricle&quot; overrides).  The same is true of streamlines ending in &quot;unknown&quot;, &quot;corpus callosum&quot;, and &quot;white matter&quot;.
 
-**Recommended applications (uses):**
+### **Recommended applications (uses):**
 
 1. **1.****  Tractography quality check:** even the cursory counts provided by the plot found under the [White Matter Classification (WMC) : categories] object&#39;s Details -\&gt; Task Results -\&gt; Number of fibers can provide insights about source tractograms.  For example, tractography run with Mrtrix 2.0 is not subject to anatomical constraints, and thus tends to have a much greater number of invalid streamlines (&quot;ventricle&quot;, &quot;unknown&quot;, &quot;corpus callosum, &quot;whitematter&quot;).  Mrtrix 3.0, on the other hand, does subject its tracking to anatomical constraints, and so there are fewer of these invalid streamlines.  As a consequence of this, for tractograms of the same streamline count, segmentation on Mrtrix 3.0 generated tractograms tends to return larger (and/or more reliable) tracts than tractograms run by Mrtrix 2.0.  As such, running a category segmentation can provide you with a quick assessment of this data quality feature.
 
