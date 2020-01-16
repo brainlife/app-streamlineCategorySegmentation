@@ -116,6 +116,7 @@ Finally, it&#39;s worth noting that some category membership is more important t
 As an example, say that for several of your subjects, your segmentation algorithm of choice fails to find a robust or anatomically plausible IFOF.  In such a case, in order to diagnose the potential cause of this, one is advised to run this app and determine if your source tractography model has any streamlines that might possibly be attributed to the IFOF.  Using the tractography visualizer, one would look at the fronto-occipital category and note whether or not there appears to be a vaguely &quot;IFOF-ish&quot; looking tract running along the ventral areas of the brain.  If you fail to find such an entity, this suggests that your input tractography is to blame (for whatever reason).  If you do find something that approximates the IFOF, this suggests that something has gone awry with the segmentation, the appropriate remedy for which depends on the segmentation algorithm used.
 
 The table below provides an overview of several established tracts and their associated category.  Not intended to serve as an exhaustive account of such tracts.  Interested parties are encouraged to message Dan Bullock with recommended additions or inquiries about unlisted tracts.
+
 | **Tract Name** | **Corresponding Category** |
 | --- | --- |
 | Arcuate | Fronto-temporal |
