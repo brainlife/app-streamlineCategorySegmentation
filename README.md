@@ -4,7 +4,7 @@
 ![alt text](wmaSeg.png)
 
 # app-wmaSeg
-Automatically segment a tractogram into categories (i.e. fronto-parietal tracts, parieto-temporal tracts, etc.) 
+Automatically segment a tractogram into categories (i.e. fronto-parietal tracts, parieto-temporal tracts, etc). THIS APPLICATION IS HIGHLY RECOMMENDED AS A MEANS OF RUNNING AN INITIAL QUALITY ASSURANCE CHECK ON YOUR GENERATED TRACTOGRAPHY OR AS A SANITY CHECK ON PROBLEMATIC SEGMENTATIONS.
 
 ### Authors
 - Daniel Bullock (dnbulloc@iu.edu)
@@ -18,6 +18,7 @@ Automatically segment a tractogram into categories (i.e. fronto-parietal tracts,
 ### Funding 
 [![NSF-BCS-1734853](https://img.shields.io/badge/NSF_BCS-1734853-blue.svg)](https://nsf.gov/awardsearch/showAward?AWD_ID=1734853)
 [![NSF-IIS-1636893](https://img.shields.io/badge/NSF_IIS-1636893-blue.svg)](https://nsf.gov/awardsearch/showAward?AWD_ID=1636893)
+[![NIMH-T32-5T32MH103213-05](https://img.shields.io/badge/NIMH_T32-5T32MH103213--05-blue.svg)](https://projectreporter.nih.gov/project_info_description.cfm?aid=9725739)
 
 ### References 
 TBA
