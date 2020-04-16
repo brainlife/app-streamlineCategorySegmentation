@@ -1,4 +1,4 @@
-function bsc_streamlineCategoryPriors_BL()
+function main()
 %[classificationOut] =bsc_streamlineCategoryPriors_BL(wbfg, fsDir,inflateITer)
 %
 % This function automatedly segments the wm streamlines of the brain into
@@ -32,7 +32,8 @@ else
     inflateITer=0;
 end
 
-[fg_classified] = bsc_streamlineCategoryPriors_v6(wbfg,atlas,inflateITer);
+[classification] = bsc_streamlineCategoryPriors_v7(wbfg,atlas,inflateITer);
+fg_classified = bsc_makeFGsFromClassification_v4(classification, wbfg);
 generate_productjson(fg_classified);
 
 %fprintf('\n classification structure stored with %i streamlines identified across %i tracts',...
