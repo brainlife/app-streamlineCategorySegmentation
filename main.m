@@ -60,6 +60,8 @@ for it = 1:length(fg_classified)
 
     clear tract
 end
+
+save('classification/classification.mat','classification');
 savejson('', all_tracts, fullfile(tractspath, 'tracts.json'));
 
 disp('all done');
