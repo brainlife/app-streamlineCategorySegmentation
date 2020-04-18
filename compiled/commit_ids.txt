@@ -14,11 +14,11 @@ Date:   Wed Sep 6 13:01:57 2017 -0400
     
     added package.json to be able to intall via npm package manager
 /N/u/brlife/git/wma_tools
-commit 82febb31372afa6551ded8a2168f72b2490fb656
+commit 9a76659758e75cfdb2d6a8c6085c4c1ea5c61fb5
 Author: Daniel Bullock <dnbulloc@iu.edu>
-Date:   Thu Apr 16 17:13:15 2020 -0400
+Date:   Fri Apr 17 12:42:27 2020 -0400
 
-    updated category seg v7 to reflect atlas passing
+    Fixed apparent oversight in l-r computation.  Hopefully doesn't break anything
 /N/u/brlife/git/encode
 commit 034825b0c304679d36c41906dfb4c9850cb64eae
 Author: francopestilli <frakkopesto@gmail.com>
