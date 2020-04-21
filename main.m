@@ -26,13 +26,16 @@ config = loadjson('config.json');
 wbfg = fgRead(config.track);
 atlas=niftiRead('aparc.a2009s+aseg.nii.gz');
 
+%no longer matters, remove this
 if isfield(config,'inflateITer')
     inflateITer=config.inflateITer;
 else
     inflateITer=0;
 end
 
-[classification] = bsc_streamlineCategoryPriors_v7(wbfg,atlas,inflateITer);
+
+fixedAtlas=bsc_inflateRelabelIslands(atlas);
+[classification] = bsc_streamlineCategoryPriors_v7(wbfg,fixedAtlas);
 fg_classified = bsc_makeFGsFromClassification_v4(classification, wbfg);
 generate_productjson(fg_classified);
 
