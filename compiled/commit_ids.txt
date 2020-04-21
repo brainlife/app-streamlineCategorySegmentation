@@ -1,9 +1,10 @@
 /N/u/hayashis/git/vistasoft
-commit a517bdce344e25f08504ede1bf532d8d2626b0b8
+commit 292d2180ef980a2283ce544528a295c55ae099e5
+Merge: b7aab0a db26c84
 Author: Soichi Hayashi <hayashis@iu.edu>
-Date:   Fri Sep 6 16:23:49 2019 +0000
+Date:   Mon Apr 20 15:43:01 2020 -0400
 
-    cleaner handling in case of empty fg.fibers
+    Merge branch 'master' of github.com:soichih/vistasoft
 /N/u/brlife/git/jsonlab
 commit 474d8c824800b5f2109c08f989085cb961acdbe3
 Merge: ae7a5d9 38b24fb
@@ -14,11 +15,11 @@ Date:   Wed Sep 6 13:01:57 2017 -0400
     
     added package.json to be able to intall via npm package manager
 /N/u/brlife/git/wma_tools
-commit 9a76659758e75cfdb2d6a8c6085c4c1ea5c61fb5
+commit b7c3e2b1dd24c59b0cf5a9dec2848409185f8c1b
 Author: Daniel Bullock <dnbulloc@iu.edu>
-Date:   Fri Apr 17 12:42:27 2020 -0400
+Date:   Mon Apr 20 22:25:15 2020 -0400
 
-    Fixed apparent oversight in l-r computation.  Hopefully doesn't break anything
+    fixed category segmentation issue with implausable
 /N/u/brlife/git/encode
 commit 034825b0c304679d36c41906dfb4c9850cb64eae
 Author: francopestilli <frakkopesto@gmail.com>
