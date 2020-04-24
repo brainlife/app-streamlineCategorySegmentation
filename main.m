@@ -30,12 +30,12 @@ atlas=niftiRead('aparc.a2009s+aseg.nii.gz');
 if isfield(config,'inflateITer')
     inflateITer=config.inflateITer;
 else
-    inflateITer=0;
+    inflateITer=1;
 end
 
 
 fixedAtlas=bsc_inflateRelabelIslands(atlas);
-[classification] = bsc_streamlineCategoryPriors_v7(wbfg,fixedAtlas);
+[classification] = bsc_streamlineCategoryPriors_v7(wbfg,fixedAtlas,inflateITer);
 fg_classified = bsc_makeFGsFromClassification_v4(classification, wbfg);
 generate_productjson(fg_classified);
 
