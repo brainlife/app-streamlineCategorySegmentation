@@ -33,14 +33,14 @@ else
     inflateITer=1;
 end
 
-disp('\nstep 1/3 bsc_inflateRelabelIslands ------------------------------------');
+fprintf('\nstep 1/3 bsc_inflateRelabelIslands ------------------------------------\n');
 fixedAtlas=bsc_inflateRelabelIslands(atlas);
-disp('\nstep 2/3 bsc_streamlineCategoryPriors_v7 ------------------------------');
+fprintf('\nstep 2/3 bsc_streamlineCategoryPriors_v7 ------------------------------\n');
 [classification] = bsc_streamlineCategoryPriors_v7(wbfg,fixedAtlas, inflateITer);
-disp('\nstep 3/3 bsc_makeFGsFromClassification_v4 -----------------------------');
+fprintf('\nstep 3/3 bsc_makeFGsFromClassification_v4 -----------------------------\n');
 [classification] = bsc_streamlineCategoryPriors_v7(wbfg,fixedAtlas,inflateITer);
 
-disp('\npostprocessing---------------------------------------------------------');
+fprintf('\npostprocessing---------------------------------------------------------\n');
 fg_classified = bsc_makeFGsFromClassification_v4(classification, wbfg);
 generate_productjson(fg_classified);
 
