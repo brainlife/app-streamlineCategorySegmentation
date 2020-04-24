@@ -38,8 +38,10 @@ fixedAtlas=bsc_inflateRelabelIslands(atlas);
 disp('\nstep 2/3 bsc_streamlineCategoryPriors_v7 ------------------------------');
 [classification] = bsc_streamlineCategoryPriors_v7(wbfg,fixedAtlas, inflateITer);
 disp('\nstep 3/3 bsc_makeFGsFromClassification_v4 -----------------------------');
+[classification] = bsc_streamlineCategoryPriors_v7(wbfg,fixedAtlas,inflateITer);
+
+disp('\npostprocessing---------------------------------------------------------');
 fg_classified = bsc_makeFGsFromClassification_v4(classification, wbfg);
-disp('\ngenerating product ----------------------------------------------------');
 generate_productjson(fg_classified);
 
 tractspath='classification/tracts';

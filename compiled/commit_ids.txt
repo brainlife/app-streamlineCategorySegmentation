@@ -11,11 +11,11 @@ Date:   Tue Aug 20 12:20:38 2019 -0400
 
     fix table transpose issue for uniform type tables
 /N/u/brlife/git/wma_tools
-commit fdc1bb6fc1bdd9c4f6f2e145e4195eda1d2511b9
+commit 4dabe726dc9c8f416b73e1d2542283d9ab03fc43
 Author: Daniel Bullock <dnbulloc@iu.edu>
-Date:   Thu Apr 23 16:03:15 2020 -0400
+Date:   Thu Apr 23 18:20:35 2020 -0400
 
-    fixed indexing issue
+    removed errant noisy variable call
 /N/u/brlife/git/encode
 commit 034825b0c304679d36c41906dfb4c9850cb64eae
 Author: francopestilli <frakkopesto@gmail.com>
