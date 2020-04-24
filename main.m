@@ -22,7 +22,7 @@ if ~isdeployed
     addpath(genpath('/N/u/brlife/git/encode'))
 end
 
-config = loadjson('config.json');
+config = loadjson('config.json')
 wbfg = fgRead(config.track);
 atlas=niftiRead('aparc.a2009s+aseg.nii.gz');
 
@@ -30,18 +30,17 @@ atlas=niftiRead('aparc.a2009s+aseg.nii.gz');
 if isfield(config,'inflateITer')
     inflateITer=config.inflateITer;
 else
-    inflateITer=0;
+    inflateITer=1;
 end
 
-
+disp('\nstep 1/3 bsc_inflateRelabelIslands ------------------------------------');
 fixedAtlas=bsc_inflateRelabelIslands(atlas);
-[classification] = bsc_streamlineCategoryPriors_v7(wbfg,fixedAtlas);
+disp('\nstep 2/3 bsc_streamlineCategoryPriors_v7 ------------------------------');
+[classification] = bsc_streamlineCategoryPriors_v7(wbfg,fixedAtlas, inflateITer);
+disp('\nstep 3/3 bsc_makeFGsFromClassification_v4 -----------------------------');
 fg_classified = bsc_makeFGsFromClassification_v4(classification, wbfg);
+disp('\ngenerating product ----------------------------------------------------');
 generate_productjson(fg_classified);
-
-%fprintf('\n classification structure stored with %i streamlines identified across %i tracts',...
-%sum(classification.index>0),length(classification.names))
-%wma_formatForBrainLife_v2(classification,wbfg)
 
 tractspath='classification/tracts';
 mkdir(tractspath);

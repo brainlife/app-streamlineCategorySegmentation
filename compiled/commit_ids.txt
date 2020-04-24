@@ -1,25 +1,21 @@
 /N/u/hayashis/git/vistasoft
-commit 292d2180ef980a2283ce544528a295c55ae099e5
-Merge: b7aab0a db26c84
+commit dd1b242d110f5748e64aae82de6604109b016434
 Author: Soichi Hayashi <hayashis@iu.edu>
-Date:   Mon Apr 20 15:43:01 2020 -0400
+Date:   Thu Apr 23 20:36:14 2020 +0000
 
-    Merge branch 'master' of github.com:soichih/vistasoft
+    fixed typo
 /N/u/brlife/git/jsonlab
-commit 474d8c824800b5f2109c08f989085cb961acdbe3
-Merge: ae7a5d9 38b24fb
+commit 31eabbaab227d500786aaa472b9f5bbd9f082c61
 Author: Qianqian Fang <fangqq@gmail.com>
-Date:   Wed Sep 6 13:01:57 2017 -0400
+Date:   Tue Aug 20 12:20:38 2019 -0400
 
-    Merge pull request #41 from dasantonym/master
-    
-    added package.json to be able to intall via npm package manager
+    fix table transpose issue for uniform type tables
 /N/u/brlife/git/wma_tools
-commit b7c3e2b1dd24c59b0cf5a9dec2848409185f8c1b
+commit fdc1bb6fc1bdd9c4f6f2e145e4195eda1d2511b9
 Author: Daniel Bullock <dnbulloc@iu.edu>
-Date:   Mon Apr 20 22:25:15 2020 -0400
+Date:   Thu Apr 23 16:03:15 2020 -0400
 
-    fixed category segmentation issue with implausable
+    fixed indexing issue
 /N/u/brlife/git/encode
 commit 034825b0c304679d36c41906dfb4c9850cb64eae
 Author: francopestilli <frakkopesto@gmail.com>
