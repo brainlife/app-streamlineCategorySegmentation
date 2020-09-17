@@ -22,6 +22,7 @@ THIS APPLICATION IS HIGHLY RECOMMENDED AS A MEANS OF RUNNING AN INITIAL QUALITY 
 
 ### References 
 [freesurfer](https://surfer.nmr.mgh.harvard.edu/)
+
 [Destrieux  2009 parcellation](https://doi.org/10.1016/j.neuroimage.2010.06.010)
 
 ## Running the App 
@@ -110,7 +111,7 @@ In some cases secondary terms are affixed to a category, indicating that the str
 
 ### **Additional Notes:**
 
-Finally, it&#39;s worth noting that some category membership is more important than others.  For example, a streamline which has a termination in a ventricle is not biologically plausible, and thus warrants a separate designation (and thus the label &quot;ventricle&quot; overrides).  The same is true of streamlines ending in &quot;unknown&quot;, &quot;corpus callosum&quot;, and &quot;white matter&quot;.
+Finally, it's worth noting that some category membership is more important than others.  For example, a streamline which has a termination in a ventricle is not biologically plausible, and thus warrants a separate designation (and thus the label "ventricle" overrides).  The same is true of streamlines ending in "unknown";, "corpus callosum";, and "white matter".
 
 ### **Recommended applications (uses):**
 
