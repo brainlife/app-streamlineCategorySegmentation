@@ -3,7 +3,7 @@
 
 ![alt text](wmaSeg.png)
 
-# app-wmaSeg
+# app-streamlineCategorySegmentation
 Automatically segment a tractogram into categories (i.e. fronto-parietal tracts, parieto-temporal tracts, etc).
 THIS APPLICATION IS HIGHLY RECOMMENDED AS A MEANS OF RUNNING AN INITIAL QUALITY ASSURANCE CHECK ON YOUR GENERATED TRACTOGRAPHY OR AS A SANITY CHECK ON PROBLEMATIC SEGMENTATIONS.
 
