@@ -1,7 +1,7 @@
 [![Abcdspec-compliant](https://img.shields.io/badge/ABCD_Spec-v1.1-green.svg)](https://github.com/brain-life/abcd-spec)
 [![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.249-blue.svg)](https://doi.org/10.25663/brainlife.app.249)
 
-# app-wmaSeg
+# app-streamlineCategorySegmentation
 Automatically segment a [tractogram](https://brainlife.io/datatypes/5907d922436ee50ffde9c549) into anatomically-based categories.
 
 These categories comprisese fiber groups such as 
