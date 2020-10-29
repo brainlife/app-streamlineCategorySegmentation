@@ -4,9 +4,9 @@
 # app-streamlineCategorySegmentation
 Automatically segment a [tractogram](https://brainlife.io/datatypes/5907d922436ee50ffde9c549) into anatomically-based categories.
 
-These categories comprisese fiber groups such as 
-- All the streamlines connecting betwee the frontal and parietal cortices, 
-- All the streamlines connecting between the parietal and temporal corticex
+These categories include fiber groups like
+- All the streamlines connecting between the frontal and parietal cortices, 
+- All the streamlines connecting between the parietal and temporal cortices,
 - Etc.
 
 THIS APPLICATION IS HIGHLY RECOMMENDED AS A MEANS OF RUNNING AN INITIAL QUALITY ASSURANCE CHECK ON YOUR GENERATED TRACTOGRAPHY OR AS A SANITY CHECK ON PROBLEMATIC SEGMENTATIONS.
