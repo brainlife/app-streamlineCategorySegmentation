@@ -20,8 +20,6 @@ THIS APPLICATION IS HIGHLY RECOMMENDED AS A MEANS OF RUNNING AN INITIAL QUALITY 
 ### Project Director
 - [Franco Pestilli](https://github.com/francopestilli) (pestilli@utexas.edu)
 
-#### Copyright (c) 2020 brainlife.io The University of Texas at Austin and Indiana University
-
 ### Funding 
 
 [![NSF-BCS-1734853](https://img.shields.io/badge/NSF_BCS-1734853-blue.svg)](https://nsf.gov/awardsearch/showAward?AWD_ID=1734853)
