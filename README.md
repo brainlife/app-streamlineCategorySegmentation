@@ -1,140 +1,208 @@
-[![Abcdspec-compliant](https://img.shields.io/badge/ABCD_Spec-v1.1-green.svg)](https://github.com/brain-life/abcd-spec)
-[![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.249-blue.svg)](https://doi.org/10.25663/brainlife.app.249)
+<h1 align="center">Segment tractogram into fiber categories</h1>
 
-![alt text](wmaSeg.png)
+<p align="center">
+  Anatomical streamline categories (fronto-parietal, occipito-temporal, …) from a whole-brain tractogram and the subject's FreeSurfer Destrieux parcellation; a quick quality check of tractography.
+</p>
 
-# app-streamlineCategorySegmentation
-Automatically segment a tractogram into categories (i.e. fronto-parietal tracts, parieto-temporal tracts, etc).
-THIS APPLICATION IS HIGHLY RECOMMENDED AS A MEANS OF RUNNING AN INITIAL QUALITY ASSURANCE CHECK ON YOUR GENERATED TRACTOGRAPHY OR AS A SANITY CHECK ON PROBLEMATIC SEGMENTATIONS.
+<p align="center">
+  <a href="https://github.com/brainlife/abcd-spec"><img src="https://img.shields.io/badge/ABCD_Spec-v1.1-green.svg" alt="ABCD Spec v1.1"></a>
+  <a href="https://doi.org/10.25663/brainlife.app.249"><img src="https://img.shields.io/badge/Brainlife-brainlife.app.249-blue.svg" alt="Run on brainlife.io"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-lightgrey.svg" alt="MIT license"></a>
+</p>
 
-### Authors
-- Daniel Bullock (dnbulloc@iu.edu)
+> 📍 **This branch, `2.0`, is the brainlife.io App Segment tractogram into fiber categories** ([doi:10.25663/brainlife.app.249](https://doi.org/10.25663/brainlife.app.249)). The other Apps in this repository are listed under **Versions on brainlife.io** below.
 
-### Contributors
-- Soichi Hayashi (hayashis@iu.edu)
+## 🧠 At a glance
 
-### Project Director
-- Franco Pestilli ([@francopestilli](https://github.com/francopestilli))
+<!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
 
-### Funding 
+> **Segments a whole-brain tractogram into streamline categories (for example fronto-parietal or parieto-temporal) by endpoint location in the FreeSurfer Destrieux parcellation with MATLAB wma_tools; useful as a tractography quality check.**
 
-[![NSF-BCS-1734853](https://img.shields.io/badge/NSF_BCS-1734853-blue.svg)](https://nsf.gov/awardsearch/showAward?AWD_ID=1734853)
-[![NSF-BCS-1636893](https://img.shields.io/badge/NSF_BCS-1636893-blue.svg)](https://nsf.gov/awardsearch/showAward?AWD_ID=1636893)
-[![NSF-ACI-1916518](https://img.shields.io/badge/NSF_ACI-1916518-blue.svg)](https://nsf.gov/awardsearch/showAward?AWD_ID=1916518)
-[![NSF-IIS-1912270](https://img.shields.io/badge/NSF_IIS-1912270-blue.svg)](https://nsf.gov/awardsearch/showAward?AWD_ID=1912270)
-[![NIH-NIBIB-R01EB029272](https://img.shields.io/badge/NIH_NIBIB-R01EB029272-green.svg)](https://grantome.com/grant/NIH/R01-EB029272-01)
-[![NIMH-T32-5T32MH103213-05](https://img.shields.io/badge/NIMH_T32-5T32MH103213--05-blue.svg)](https://projectreporter.nih.gov/project_info_description.cfm?aid=9725739)
+Converts the FreeSurfer aparc.a2009s+aseg parcellation to NIfTI, inflates grey matter labels into white matter, and labels every streamline by the cortical/subcortical categories its endpoints reach (bsc_streamlineCategoryPriors_v6). Recommended as an initial quality assurance check of a tractogram or a sanity check on problematic segmentations. Tractogram and FreeSurfer output must be of the same subject and space.
 
-### References 
-[freesurfer](https://surfer.nmr.mgh.harvard.edu/)
+| | |
+|---|---|
+| 📥 **Inputs** | `neuro/track/tck` · `neuro/freesurfer` |
+| 📤 **Outputs** | `neuro/wmc` |
+| 🐳 **Container** | `brainlife/freesurfer_on_mcr:6.0.2` |
+| ⚙️ **Resources** | 8 CPUs · 58 GB memory · 10 h walltime |
+| 🔑 **Requires** | `FREESURFER_LICENSE` |
+| 🔗 **Run it** | [doi.org/10.25663/brainlife.app.249](https://doi.org/10.25663/brainlife.app.249) |
 
-[Avesani, P., McPherson, B., Hayashi, S. et al. The open diffusion data derivatives, brain data upcycling via integrated publishing of derivatives and reproducible open cloud services. Sci Data 6, 69 (2019).](https://doi.org/10.1038/s41597-019-0073-y)
+#### 📥 Inputs
 
-[Destrieux  2009 parcellation](https://doi.org/10.1016/j.neuroimage.2010.06.010)
+| Input | Datatype | Required | Description |
+|---|---|---|---|
+| `track` | `neuro/track/tck` | yes | Whole brain tractography |
+| `freesurfer` | `neuro/freesurfer` | yes | FreeSurfer subject directory; aparc.a2009s+aseg (Destrieux) is used to label streamline endpoints. |
 
-## Running the App 
+#### 📤 Outputs
 
-### On Brainlife.io
+| Output | Datatype | Description |
+|---|---|---|
+| `classification` | `neuro/wmc` | White matter classification with one category per endpoint-region pair and tract JSON files. |
 
-Visit https://doi.org/10.25663/brainlife.app.151 to run this app on the brainlife.io platform.  Requires a freesurfer input (as it makes use of the 2009 parcellation) and an input tractography.
+<details>
+<summary><b>⚙️ Parameters</b> (1)</summary>
 
-### Running Locally (on your machine) using singularity & docker
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `inflateITer` | number | `2` | How many iterations of inflation should be run to inflate grey matter into white matter. 2 recommended. |
 
-Because this is compiled code which runs on singularity, you can download the repo and run it locally with minimal setup.  Ensure that you have singularity and freesurfer set up locally (freesurfer setup not necessary if relevant parcellation files have already been converted to nii.gz).
+</details>
 
-### Running Locally (on your machine)
+<!-- brainlife-app:end -->
 
-Pull the wma toolkit repo:  https://github.com/DanNBullock/wma_tools
+## 🏷️ Versions on brainlife.io
 
-Ensure that vistasoft (https://github.com/vistalab/vistasoft) and spm (https://www.fil.ion.ucl.ac.uk/spm/software/ ; tested with spm8) are installed.
+Each version is a separate App on brainlife.io, built from its own branch of this repository.
 
-Run: https://github.com/DanNBullock/wma_tools/blob/master/bsc_streamlineCategoryPriors_BL.m, but take care to ensure that the addpath-genpath statements are relevant to your local setup.
+| Version | FreeSurfer | Branch | Run it | Status |
+|---|---|---|---|---|
+| **Segment tractogram into fiber categories** (this branch) | 6.0.2 | [`2.0`](https://github.com/brainlife/app-streamlineCategorySegmentation/tree/2.0) | [doi:10.25663/brainlife.app.249](https://doi.org/10.25663/brainlife.app.249) | current |
+| Segment tractogram into fiber categories | 6.0.0 | [`1.3`](https://github.com/brainlife/app-streamlineCategorySegmentation/tree/1.3) | [doi:10.25663/brainlife.app.151](https://doi.org/10.25663/brainlife.app.151) | deprecated |
 
-Utilize a config.json setup that is analagous to the one contained within this repo, listed as a sample.
+## 🚀 Running the App
 
-### Sample Datasets
+This App is highly recommended as an initial quality assurance check on a newly generated tractogram, or as a sanity check on problematic segmentations.
 
-Visit brainlife.io and explore the following data sets to find viable freesurfer and tractography inputs:
+### ☁️ On brainlife.io
 
-03D: https://brainlife.io/pub/5a0f0fad2c214c9ba8624376
+Open the App at [doi.org/10.25663/brainlife.app.249](https://doi.org/10.25663/brainlife.app.249), choose a whole-brain [tractogram](https://brainlife.io/datatypes/5907d922436ee50ffde9c549) (`neuro/track/tck`) and the [FreeSurfer output](https://brainlife.io/datatypes/58cb22c8e13a50849b25882e) of the same subject, and press **Execute**. A subject-specific FreeSurfer output is required because the App uses its [Destrieux 2009 parcellation](https://doi.org/10.1016/j.neuroimage.2010.06.010) (`aparc.a2009s+aseg`). The App archives a [White Matter Classification (WMC)](https://brainlife.io/datatype/5cc1d64c44947d8aea6b2d8b) dataset tagged `categories` to your project.
 
-HCP freesurfer:  https://brainlife.io/project/5941a225f876b000210c11e5/detail
-HCP tractography:  https://brainlife.io/project/5c3caea0a6747b0036dcbf9a/
+### 💻 Locally
 
+The segmentation is compiled MATLAB code that runs in containers. You need [Singularity/Apptainer](https://apptainer.org/), [`jq`](https://jqlang.github.io/jq/) and a [FreeSurfer license](https://surfer.nmr.mgh.harvard.edu/registration.html) (used to convert `aparc.a2009s+aseg.mgz` to NIfTI with FreeSurfer 6.0.2; not needed if `aparc.a2009s+aseg.nii.gz` is already in the working directory).
 
-## Output
+1. Clone this repository and check out the version you want (for example `git checkout 2.0`).
+2. Create `config.json` with the paths to your inputs:
 
-The relevant output for this application is a classification structure.  The classification structure is a .mat file which contains a matlab structure (entitled classification) with two fields:  names and index.  The names field lists the names of tracts which were identified by this process as strings.  The index field is a 1 dimensional vector containing zeros for all unidentified streamlines, and integer index values corresponding to streamlines' membership in the corresponding structure of the names vector.
+   ```json
+   {
+       "track": "/input/track/track.tck",
+       "freesurfer": "/input/freesurfer/output",
+       "inflateITer": 2
+   }
+   ```
 
-#### Product.json
+   `inflateITer` is the number of iterations used to inflate grey matter labels into white matter (2 recommended).
 
-Not relevant for this App as it does not generate processed data. 
+3. Export your license and run the App:
 
-### Dependencies
+   ```bash
+   export FREESURFER_LICENSE="$(cat ~/freesurfer/license.txt)"
+   ./main
+   ```
 
-This App only requires [singularity](https://www.sylabs.io/singularity/) and (in some cases), Freesurfer, and mrtrix3 to run . If you don't have singularity, you will need to install following dependencies.  
+To run the uncompiled MATLAB code instead, get the [wma_tools](https://github.com/DanNBullock/wma_tools) repository, install [vistasoft](https://github.com/vistalab/vistasoft) and [SPM](https://www.fil.ion.ucl.ac.uk/spm/software/) (tested with SPM8), and call the [`bsc_streamlineCategoryPriors_BL`](https://github.com/DanNBullock/wma_tools/blob/master/bsc_streamlineCategoryPriors_BL.m) wrapper with a `config.json` like the one above, adjusting its `addpath(genpath(...))` statements to your setup.
 
-https://singularity.lbl.gov/docs-installation
-https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall
-http://www.mrtrix.org/
+### 🧪 Sample data
 
-## General Use Guide
+Viable FreeSurfer and tractography datasets can be found on brainlife.io, for example in the [O3D publication](https://brainlife.io/pub/5a0f0fad2c214c9ba8624376) and in the HCP [FreeSurfer](https://brainlife.io/project/5941a225f876b000210c11e5/detail) and [tractography](https://brainlife.io/project/5c3caea0a6747b0036dcbf9a/) projects.
 
-### **Guide to preliminary category determinants:**
+## 📦 Outputs
 
-Initial categorization occurs in virtue of each streamline&#39;s endpoints.  That is, each streamline is assigned two category labels, one for each endpoint.  Category label ordering ultimately does not matter, and thus neither does streamline orientation (i.e. first to last node vs last to first node).  This label is applied based on the volume in which the endpoint terminates.  The code checks which label from the [Freesurfer 2009 Destrieux atlas](https://surfer.nmr.mgh.harvard.edu/fswiki/DestrieuxAtlasChanges)), and category membership is ultimately determined from the tables depicted below.
+```text
+classification/
+├── classification.mat   WMC structure: one category name per endpoint-region pair, one label per streamline
+└── tracts/              tracts.json and one <n>.json per category, for visualisation on brainlife.io
+```
 
+The default branch also writes `classification/surfaces/` (VTK surfaces of the parcellation with an `index.json`). The categorisation is *complete*: every streamline is assigned to some category (see the [discussion of white matter classification schemas](https://brainlife.io/datatype/5cc1d64c44947d8aea6b2d8b)). No `product.json` is generated.
 
+## How streamlines are categorised
 
-| **Brain Region Designation** | **FS 2009 ASEG Region** **(11/12XXX) for 3 digit numbers** |
+Each streamline gets two labels, one for the region in which each endpoint terminates in the [FreeSurfer 2009 Destrieux atlas](https://surfer.nmr.mgh.harvard.edu/fswiki/DestrieuxAtlasChanges); label order, and so streamline orientation, does not matter. Regions are grouped as follows:
+
+| Brain region designation | FS 2009 aseg region (11/12XXX for 3-digit numbers) |
 | --- | --- |
-| Subcortical | 10:13, 17:20, 26, 58, 27, 49:56, 59, |
+| Subcortical | 10:13, 17:20, 26, 58, 27, 49:56, 59 |
 | Spinal | 16, 28, 60 |
-| Cerebellum | 8, 47, 7, 46, |
-| Ventricles | 31, 63, 4 43, 14, 24, 15, 44, 5, 62, 30, 80, 72 |
+| Cerebellum | 8, 47, 7, 46 |
+| Ventricles | 31, 63, 4, 43, 14, 24, 15, 44, 5, 62, 30, 80, 72 |
 | White matter | 42, 2 |
-| Corpus Callosum | 251:255 |
+| Corpus callosum | 251:255 |
 | Unknown | 0, 2000, 1000, 77:82, 24, 42, 3 |
-| Optic Chiasm | 85 |
+| Optic chiasm | 85 |
 | Frontal | 124, 148, 118, 165, 101, 154, 105, 115, 154, 155, 115, 170, 129, 146, 153, 164, 106, 116, 108, 131, 171, 112, 150, 104, 169, 114, 113, 116, 107, 163, 139, 132, 140 |
-| Temporal | 144, 134, 138, 137, 173, 174, 135, 175, 121, 151, 123, 162, 133, |
+| Temporal | 144, 134, 138, 137, 173, 174, 135, 175, 121, 151, 123, 162, 133 |
 | Occipital | 120, 119, 111, 158, 166, 143, 145, 159, 152, 122, 162, 161, 121, 160, 102 |
 | Parietal | 157, 127, 168, 136, 126, 125, 156, 128, 141, 172, 147, 109, 103, 130, 110 |
 | Insula | 117, 149 |
 
-### **Additional sub-categorical determinants:**
+Some categories carry an extra term when the streamlines meet further criteria:
 
-In some cases secondary terms are affixed to a category, indicating that the streamlines associated with this subcategory meet some additional criteria which merits further note.  Listed below are these sub-categories and their membership requirements
-
-| **Sub-category** | **Criteria** |
+| Sub-category | Criteria |
 | --- | --- |
-| Interhemispheric | Endpoints occur in separate hemispheres of brain |
-| U fiber | Streamlines that are both superficial (i.e. not deep in the white matter) and less than 30 mm in length. |
+| Interhemispheric | Endpoints occur in separate hemispheres |
+| U-fiber | Streamlines that are superficial (not deep in the white matter) and shorter than 30 mm |
 
-### **Additional Notes:**
+Some memberships override others: a streamline ending in a ventricle is not biologically plausible and is labelled "ventricle" whatever its other endpoint; the same holds for "unknown", "corpus callosum" and "white matter".
 
-Finally, it&#39;s worth noting that some category membership is more important than others.  For example, a streamline which has a termination in a ventricle is not biologically plausible, and thus warrants a separate designation (and thus the label &quot;ventricle&quot; overrides).  The same is true of streamlines ending in &quot;unknown&quot;, &quot;corpus callosum&quot;, and &quot;white matter&quot;.
+### Recommended uses
 
-### **Recommended applications (uses):**
+1. **Tractography quality check.** The fibre counts per category (under the WMC dataset's *Details → Task Results → Number of fibers*) say a lot about the source tractogram. Tractography without anatomical constraints (for example MRtrix 2.0) produces many more invalid streamlines ("ventricle", "unknown", "corpus callosum", "white matter") than anatomically constrained tracking (MRtrix 3.0), so, for the same streamline count, constrained tractograms tend to yield larger and more reliable tracts.
+2. **Tract candidate assessment.** A tract cannot be segmented if the tractogram does not contain its streamlines (this happens occasionally with the IFOF, for example, through poor tracking parameters or problems with the DWI). If a segmentation fails to find a plausible tract, run this App and inspect the matching category in the tractography viewer: if nothing resembling the tract is there, the tractogram is to blame; if it is, the problem lies with the segmentation.
 
-1. **1.****  Tractography quality check:** even the cursory counts provided by the plot found under the [White Matter Classification (WMC) : categories] object's [Details -> Task Results -> Number of fibers] can provide insights about source tractograms.  For example, tractography run with Mrtrix 2.0 is not subject to anatomical constraints, and thus tends to have a much greater number of invalid streamlines (&quot;ventricle&quot;, &quot;unknown&quot;, &quot;corpus callosum, &quot;whitematter&quot;).  Mrtrix 3.0, on the other hand, does subject its tracking to anatomical constraints, and so there are fewer of these invalid streamlines.  As a consequence of this, for tractograms of the same streamline count, segmentation on Mrtrix 3.0 generated tractograms tends to return larger (and/or more reliable) tracts than tractograms run by Mrtrix 2.0.  As such, running a category segmentation can provide you with a quick assessment of this data quality feature.
+Established tracts and their category (not exhaustive; suggestions are welcome via the repository's issues):
 
-1. **2.**** Tract candidate assessment:**  Even in the event that your whole brain tractography has been subjected to anatomical constraints, one is not guaranteed to obtain a robust segmentation of tracts (full coverage of tracts, all tracts well represented).  In some cases, the source tractography may simply not generate the necessary streamlines to model the relevant tract (this happens occasionally with the IFOF, for example).  This may be due to a bad parameterization for tractography generation or due to issues with the input dwi itself.  Regardless of the cause, the simple mantra of &quot;Garbage in, garbage out&quot; holds true: _you cannot segment a tract from a whole brain tractography model of the requisite streamlines aren&#39;t there._  
-
-As an example, say that for several of your subjects, your segmentation algorithm of choice fails to find a robust or anatomically plausible IFOF.  In such a case, in order to diagnose the potential cause of this, one is advised to run this app and determine if your source tractography model has any streamlines that might possibly be attributed to the IFOF.  Using the tractography visualizer, one would look at the fronto-occipital category and note whether or not there appears to be a vaguely &quot;IFOF-ish&quot; looking tract running along the ventral areas of the brain.  If you fail to find such an entity, this suggests that your input tractography is to blame (for whatever reason).  If you do find something that approximates the IFOF, this suggests that something has gone awry with the segmentation, the appropriate remedy for which depends on the segmentation algorithm used.
-
-The table below provides an overview of several established tracts and their associated category.  Not intended to serve as an exhaustive account of such tracts.  Interested parties are encouraged to message Dan Bullock with recommended additions or inquiries about unlisted tracts.
-
-| **Tract Name** | **Corresponding Category** |
+| Tract | Category |
 | --- | --- |
 | Arcuate | Fronto-temporal |
-| VOF (vertical occipital fasciculus) | Occipital-occipital (&amp; U-fiber) |
-| TP-SPL (temporo parietal connection) | Temporal-parietal |
-| MdLF (middle longitudinal fasciculus)   | Temporo-parietal |
+| VOF (vertical occipital fasciculus) | Occipital-occipital (and U-fiber) |
+| TP-SPL (temporo-parietal connection) | Temporal-parietal |
+| MdLF (middle longitudinal fasciculus) | Temporo-parietal |
 | Aslant | Frontal-frontal |
-| CST (cortico spinal tract) | Spinal-frontal |
+| CST (corticospinal tract) | Spinal-frontal |
 | SLF (superior longitudinal fasciculus) | Frontal-parietal |
 | ILF (inferior longitudinal fasciculus) | Occipital-temporal |
 | IFOF (inferior fronto-occipital fasciculus) | Frontal-occipital |
 | pArc (posterior arcuate) | Temporal-parietal |
-| Uncinate | Frontal-temporal | 
+| Uncinate | Frontal-temporal |
+
+## 🩺 Troubleshooting
+
+- **`Please set FREESURFER_LICENSE in .bashrc`**: no FreeSurfer license in the environment. Export `FREESURFER_LICENSE` (brainlife.io provides it automatically).
+- **`output missing`**: the segmentation did not write `classification/classification.mat`. Check the logs and make sure the tractogram and FreeSurfer output belong to the same subject and are in the same space.
+
+## 📚 Citing
+
+> [!TIP]
+> If you use this App in your work, please cite the App, the software it builds on and brainlife.io (below). GitHub's **Cite this repository** button gives the App citation in APA and BibTeX.
+
+- Destrieux C, Fischl B, Dale A, Halgren E. Automatic parcellation of human cortical gyri and sulci using standard anatomical nomenclature. *NeuroImage* 53(1):1–15 (2010). [doi:10.1016/j.neuroimage.2010.06.010](https://doi.org/10.1016/j.neuroimage.2010.06.010)
+- Segment tractogram into fiber categories. brainlife.io App. [doi:10.25663/brainlife.app.249](https://doi.org/10.25663/brainlife.app.249)
+- Avesani P, McPherson B, Hayashi S, et al. The open diffusion data derivatives, brain data upcycling via integrated publishing of derivatives and reproducible open cloud services. Sci Data 6, 69 (2019). [doi:10.1038/s41597-019-0073-y](https://doi.org/10.1038/s41597-019-0073-y)
+- Fischl. FreeSurfer. *NeuroImage* 62:774-781 (2012). [doi:10.1016/j.neuroimage.2012.01.021](https://doi.org/10.1016/j.neuroimage.2012.01.021)
+- Bullock et al. Associative white matter connecting the dorsal and ventral posterior human cortex. *Brain Structure and Function* 224:2631-2660 (2019). [doi:10.1007/s00429-019-01907-8](https://doi.org/10.1007/s00429-019-01907-8)
+- Hayashi S, Caron BA, Heinsfeld AS, et al. brainlife.io: a decentralized and open-source cloud platform to support neuroscience research. *Nature Methods* 21:809–813 (2024). [doi:10.1038/s41592-024-02237-2](https://doi.org/10.1038/s41592-024-02237-2)
+
+## 👥 Authors
+
+- [Daniel Bullock](https://github.com/DanNBullock)
+- [Franco Pestilli](https://github.com/francopestilli) (project director)
+
+**Contributors:** [Soichi Hayashi](https://github.com/soichih)
+
+## 💰 Funding
+
+[![Wellcome-226486/Z/22/Z](https://img.shields.io/badge/Wellcome-226486%2FZ%2F22%2FZ-purple.svg)](https://wellcome.org/)
+[![NIH-NINDS-U24NS140384](https://img.shields.io/badge/NIH_NINDS-U24NS140384-green.svg)](https://reporter.nih.gov/project-details/11261037)
+[![NIH-NINDS-UM1NS132207](https://img.shields.io/badge/NIH_NINDS-UM1NS132207-green.svg)](https://reporter.nih.gov/project-details/11411328)
+[![NIH-NIBIB-R01EB029272](https://img.shields.io/badge/NIH_NIBIB-R01EB029272-green.svg)](https://reporter.nih.gov/project-details/10262925)
+[![NIH-NIBIB-R01EB030896](https://img.shields.io/badge/NIH_NIBIB-R01EB030896-green.svg)](https://reporter.nih.gov/project-details/10428625)
+[![NIH-NIMH-R01MH126699](https://img.shields.io/badge/NIH_NIMH-R01MH126699-green.svg)](https://reporter.nih.gov/project-details/10460628)
+[![NIH-NIDCD-R01DC020088](https://img.shields.io/badge/NIH_NIDCD-R01DC020088-green.svg)](https://reporter.nih.gov/project-details/11140284)
+[![NSF-BCS-1734853](https://img.shields.io/badge/NSF_BCS-1734853-blue.svg)](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1734853)
+[![NSF-BCS-2203524](https://img.shields.io/badge/NSF_BCS-2203524-blue.svg)](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2203524)
+[![NSF-IIS-1636893](https://img.shields.io/badge/NSF_IIS-1636893-blue.svg)](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1636893)
+[![NSF-OAC-2148729](https://img.shields.io/badge/NSF_OAC-2148729-blue.svg)](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2148729)
+[![NSF-IIS-1912270](https://img.shields.io/badge/NSF_IIS-1912270-blue.svg)](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1912270)
+[![NSF-IIS-2148700](https://img.shields.io/badge/NSF_IIS-2148700-blue.svg)](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2148700)
+[![NSF-OAC-1916518](https://img.shields.io/badge/NSF_OAC-1916518-blue.svg)](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1916518)
+
+<sub>brainlife.io is publicly funded, and acknowledging that support helps keep it running. This App was developed with support from Wellcome, the U.S. National Institutes of Health (including the BRAIN Initiative BRAIN CONNECTS program: The Axonal Projectome EXchange, U24NS140384, and the Center for Mesoscale Connectomics, UM1NS132207) and the U.S. National Science Foundation.</sub>
+
+## ⚖️ License
+
+[MIT](LICENSE). FreeSurfer is distributed under its own [license](https://surfer.nmr.mgh.harvard.edu/fswiki/FreeSurferSoftwareLicense).
