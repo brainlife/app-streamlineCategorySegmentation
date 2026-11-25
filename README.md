@@ -14,30 +14,40 @@
 
 <!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
 
-**Segments a whole-brain tractogram into streamline categories (for example fronto-parietal or parieto-temporal) by endpoint location in the FreeSurfer Destrieux parcellation with MATLAB wma_tools; useful as a tractography quality check.**
+> **Segments a whole-brain tractogram into streamline categories (for example fronto-parietal or parieto-temporal) by endpoint location in the FreeSurfer Destrieux parcellation with MATLAB wma_tools; useful as a tractography quality check.**
 
 Converts the FreeSurfer aparc.a2009s+aseg parcellation to NIfTI, inflates grey matter labels into white matter, and labels every streamline by the cortical/subcortical categories its endpoints reach (bsc_streamlineCategoryPriors_v6). Recommended as an initial quality assurance check of a tractogram or a sanity check on problematic segmentations. Tractogram and FreeSurfer output must be of the same subject and space.
 
-Run it on brainlife.io: [https://doi.org/10.25663/brainlife.app.249](https://doi.org/10.25663/brainlife.app.249)
+| | |
+|---|---|
+| 📥 **Inputs** | `neuro/track/tck` · `neuro/freesurfer` |
+| 📤 **Outputs** | `neuro/wmc` |
+| 🐳 **Container** | `brainlife/freesurfer_on_mcr:6.0.2` |
+| ⚙️ **Resources** | 8 CPUs · 58 GB memory · 10 h walltime |
+| 🔑 **Requires** | `FREESURFER_LICENSE` |
+| 🔗 **Run it** | [doi.org/10.25663/brainlife.app.249](https://doi.org/10.25663/brainlife.app.249) |
+
+#### 📥 Inputs
 
 | Input | Datatype | Required | Description |
 |---|---|---|---|
 | `track` | `neuro/track/tck` | yes | Whole brain tractography |
 | `freesurfer` | `neuro/freesurfer` | yes | FreeSurfer subject directory; aparc.a2009s+aseg (Destrieux) is used to label streamline endpoints. |
 
+#### 📤 Outputs
+
 | Output | Datatype | Description |
 |---|---|---|
 | `classification` | `neuro/wmc` | White matter classification with one category per endpoint-region pair and tract JSON files. |
+
+<details>
+<summary><b>⚙️ Parameters</b> (1)</summary>
 
 | Parameter | Type | Default | Description |
 |---|---|---|---|
 | `inflateITer` | number | `2` | How many iterations of inflation should be run to inflate grey matter into white matter. 2 recommended. |
 
-Runtime: container `brainlife/freesurfer_on_mcr:6.0.2`; 8 CPUs; 58 GB memory; 10 h walltime; needs `FREESURFER_LICENSE`.
-
-Please cite:
-- Avesani P, McPherson B, Hayashi S, et al. The open diffusion data derivatives, brain data upcycling via integrated publishing of derivatives and reproducible open cloud services. Sci Data 6, 69 (2019). [doi:10.1038/s41597-019-0073-y](https://doi.org/10.1038/s41597-019-0073-y)
-- Destrieux C, Fischl B, Dale A, Halgren E. Automatic parcellation of human cortical gyri and sulci using standard anatomical nomenclature. NeuroImage 53(1):1-15 (2010). [doi:10.1016/j.neuroimage.2010.06.010](https://doi.org/10.1016/j.neuroimage.2010.06.010)
+</details>
 
 <!-- brainlife-app:end -->
 
