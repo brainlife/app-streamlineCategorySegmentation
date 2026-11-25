@@ -14,7 +14,7 @@ THIS APPLICATION IS HIGHLY RECOMMENDED AS A MEANS OF RUNNING AN INITIAL QUALITY 
 - Soichi Hayashi (hayashis@iu.edu)
 
 ### Project Director
-- Franco Pestilli (franpest@indiana.edu)
+- Franco Pestilli ([@francopestilli](https://github.com/francopestilli))
 
 ### Funding 
 
